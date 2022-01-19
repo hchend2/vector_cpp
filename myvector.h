@@ -25,13 +25,13 @@ class myvector {
                 int curIndex; // the element we are currently at...
             public:
                 // default constructor...denotes the 1st item...
-               iterator(myvector* v) {
-                   this->v = v; //
+               iterator(myvector* vec) {
+                   v = vec; //
                    curIndex = 0; //
                }
                // constructor...denotes the nth item...
-               iterator(myvector* v, int n) {
-                   this->v = v;
+               iterator(myvector* vec, int n) {
+                   v = vec;
                    curIndex = n;
                }
                // advance to the next...
@@ -57,8 +57,20 @@ class myvector {
         };
     public:
         myvector() {
-            capacity = 4;
-            ptr = new T[capacity];
+            ptr = new T[4]; //
             size = 0;
+            capacity = 4;
+        }
+
+        // copy constructor...
+        myvector(const myvector& other) {
+            // allocate this vector same capacity as other...
+            this->ptr = new T[other.capacity];
+            this->size = other.size;
+            this->capacity = other.capacity;
+            // copy elements from other vector to this...
+            for (int i = 0; i < other.size; i++) {
+                this->ptr[i] = other.ptr[i];
+            }
         }
 };
