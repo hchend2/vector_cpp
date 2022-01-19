@@ -73,4 +73,15 @@ class myvector {
                 this->ptr[i] = other.ptr[i];
             }
         }
+
+        // move constructor...
+        myvector(const myvector&& other) {
+            this->ptr = other.ptr; //
+            this->size = other.size; //
+            this->capacity = other.capacity; //
+
+            other.ptr = nullptr;
+            other.size = 0;
+            other.capacity;
+        }
 };
